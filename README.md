@@ -3,7 +3,7 @@
 **BlockTalk**  is a decentralized chat application built on the Ethereum blockchain using smart contracts. It allows users to chat with each other without the need for a centralized server or intermediary. The application is powered by the Ethereum blockchain, which provides transparency, security, and immutability to the messages exchanged between users.
 
 <br clear="left"/>
-</br>
+
 
 
 <h3> Features: </h3>
