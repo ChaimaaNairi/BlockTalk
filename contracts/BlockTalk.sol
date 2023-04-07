@@ -62,7 +62,9 @@ contract BlockTalk {
         require(msg.sender != friend_key, "Users cannot add themselves as friends");
         require(checkAlreadyFriend(msg.sender, friend_key) == false, "These users are already friends");
 
-        userList[msg.sender].friendList.push(friend(friend_key, name));
+        _addFriend(msg.sender, friend_key, name);
+        _addFriend(friend_key, msg.sender, userList[msg.sender].name);
+        
     }
 
 }
