@@ -22,6 +22,11 @@ contract BlockTalk {
         string message;
     }
 
+    struct AllUsersStruck{
+        string name;
+        address accountAddress;
+    }
+
     //mapping of users
     mapping(address => user) userList;
     mapping(bytes32 => message[]) allMessages;
@@ -32,7 +37,6 @@ contract BlockTalk {
         return bytes(userList[pubkey].name).length > 0;
     }
 
-    
     //create account
     function createAccount(string calldata name) external {
         require(checkUserExists(msg.sender) == false, "User already exist");
