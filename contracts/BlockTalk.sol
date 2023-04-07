@@ -39,4 +39,10 @@ contract BlockTalk {
         userList[msg.sender].name = name;
     }
 
+    //get user name
+    function getUserName(address pubkey) external view returns (string memory) {
+        require(checkUserExist(pubkey) == true, "User does not exist");
+        return userList[pubkey].name;
+    }
+
 }
