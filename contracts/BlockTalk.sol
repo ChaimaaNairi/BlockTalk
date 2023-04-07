@@ -40,7 +40,7 @@ contract BlockTalk {
     }
 
     //get user name
-    function getUserName(address pubkey) external view returns (string memory) {
+    function getUsername(address pubkey) external view returns (string memory) {
         require(checkUserExist(pubkey) == true, "User does not exist");
         return userList[pubkey].name;
     }
