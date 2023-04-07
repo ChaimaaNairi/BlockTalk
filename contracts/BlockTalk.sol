@@ -34,7 +34,7 @@ contract BlockTalk {
 
     //create account
     function createAccount(string calldata name) external {
-        require(!checkUserExist(msg.sender), "User already exist");
+        require(checkUserExist(msg.sender) == false, "User already exist");
         userList[msg.sender].name = name;
     }
 
