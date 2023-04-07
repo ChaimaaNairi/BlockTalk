@@ -93,14 +93,14 @@ contract BlockTalk {
     }
 
     //send message
-    function sendMessage(address friend_pubkey, string calldata message) external {
+    function sendMessage(address friend_key, string calldata _msg) external {
         require(checkUserExists(msg.sender), "Create an account first");
-        require(checkUserExists(friend_pubkey), "User is not registered");
-        require(checkAlreadyFriends(msg.sender, friend_pubkey), "These users are not friends");
+        require(checkUserExists(friend_key), "User is not registered");
+        require(checkAlreadyFriends(msg.sender, friend_key), "You are not frind with the given address user");
 
-        bytes32 chatCode = _getChatCode(msg.sender, friend_pubkey);
-        message memory newMessage = message(msg.sender, block.timestamp, message);
-        allMessages[chatCode].push(newMessage);
+        bytes32 chatCode = _getChatCode(msg.sender, friend_key);
+        message memory newMsg = message(msg.sender, block.timestamp, _msg);
+        allMessages[chatCode].push(newMsg);
     }
 
 }
