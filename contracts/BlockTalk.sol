@@ -61,11 +61,10 @@ contract BlockTalk {
     //check already friend
     function checkAlreadyFriends(address user_pubkey1, address friend_pubkey2) internal view returns (bool) {
         if(userList[user_pubkey1].friendList.length > userList[pubkey2].friendList.length){
-            for(uint256 i = 0; i < userList[user_pubkey1].friendList.length; i++){
                 address temp = user_pubkey1;
                 user_pubkey1 = friend_pubkey2;
                 friend_pubkey2 = temp;
-            }
+            
         }
 
         
