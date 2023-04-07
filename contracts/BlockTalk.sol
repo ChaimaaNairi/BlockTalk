@@ -4,25 +4,19 @@ pragma solidity >=0.7.0 <0.9.0;
 contract BlockTalk {
     
     //user struct
-    struct User {
+    struct user {
         string name;
-        string email;
-        string password;
-        string bio;
-        string profilePic;
-        string[] posts;
-        string[] followers;
-        string[] following;
+        friend[] friendList;
     }
 
     //friend struct
-    struct Friend {
+    struct friend {
         address pubkey;
         string name;
     }
 
     //message struct
-    struct Message {
+    struct message {
         address sender;
         uint256 timestamp;
         string message;
