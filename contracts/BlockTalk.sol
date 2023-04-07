@@ -59,14 +59,14 @@ contract BlockTalk {
     }
 
     //check already friend
-    function checkAlreadyFriends(address user_pubkey1, address friend_pubkey2) internal view returns (bool) {
-        if(userList[user_pubkey1].friendList.length > userList[friend_pubkey2].friendList.length){
-                address temp = user_pubkey1;
-                user_pubkey1 = friend_pubkey2;
-                friend_pubkey2 = temp;
+    function checkAlreadyFriends(address pubkey1, address pubkey2) internal view returns (bool) {
+        if(userList[pubkey1].friendList.length > userList[pubkey2].friendList.length){
+                address temp = pubkey1;
+                pubkey1 = pubkey2;
+                pubkey2 = temp;
         }
-        for(uint256 i = 0; i < userList[user_pubkey1].friendList.length; i++){
-            if(userList[user_pubkey1].friendList[i].pubkey == friend_pubkey2){
+        for(uint256 i = 0; i < userList[pubkey1].friendList.length; i++){
+            if(userList[pubkey1].friendList[i].pubkey == pubkey2){
                 return true;
             }
         }
