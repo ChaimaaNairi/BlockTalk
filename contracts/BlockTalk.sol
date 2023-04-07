@@ -72,7 +72,6 @@ contract BlockTalk {
         }
     }
 
-
     //add friend
     function _addFriend(address user_key, address friend_key, string memory name) internal {
         friend memory newFriend = friend(friend_key, name);
