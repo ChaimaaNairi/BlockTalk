@@ -32,6 +32,16 @@ contract BlockTalk {
         return bytes(userList[pubkey].name).length > 0;
     }
 
+    //check already friend
+    function checkAlreadyFriend(address user_key, address friend_key) public view returns (bool) {
+        for (uint256 i = 0; i < userList[user_key].friendList.length; i++) {
+            if (userList[user_key].friendList[i].pubkey == friend_key) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //create account
     function createAccount(string calldata name) external {
         require(checkUserExist(msg.sender) == false, "User already exist");
@@ -50,7 +60,7 @@ contract BlockTalk {
         require(checkUserExist(msg.sender), "Create an account first");
         require(checkUserExist(friend_key), "User is not registered");
         require(msg.sender != friend_key, "Users cannot add themselves as friends");
-        require(checkAlreadyFriend(msg.sender, friend_key) == false, "User is already friend");
+        require(checkAlreadyFriend(msg.sender, friend_key) == false, "These users are already friends");
 
         userList[msg.sender].friendList.push(friend(friend_key, name));
     }
