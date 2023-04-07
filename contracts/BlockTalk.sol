@@ -24,6 +24,6 @@ contract BlockTalk {
 
     //mapping of users
     mapping(address => user) userList;
-    mapping(address => message[]) messageList;
+    mapping(bytes32 => message[]) allMessages;
     
 }
