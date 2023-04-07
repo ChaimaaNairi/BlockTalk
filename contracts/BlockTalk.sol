@@ -73,9 +73,9 @@ contract BlockTalk {
     }
 
     //add friend
-    function _addFriend(address user_key, address friend_key, string memory name) internal {
+    function _addFriend(address me, address friend_key, string memory name) internal {
         friend memory newFriend = friend(friend_key, name);
-        userList[user_key].friendList.push(newFriend);
+        userList[me].friendList.push(newFriend);
     }
 
 }
