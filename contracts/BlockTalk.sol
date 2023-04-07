@@ -50,7 +50,8 @@ contract BlockTalk {
         require(checkUserExist(msg.sender), "Create an account first");
         require(checkUserExist(friend_key), "User is not registered");
         require(msg.sender != friend_key, "Users cannot add themselves as friends");
-       
+        require(checkAlreadyFriend(msg.sender, friend_key) == false, "User is already friend");
+
         userList[msg.sender].friendList.push(friend(friend_key, name));
     }
 
