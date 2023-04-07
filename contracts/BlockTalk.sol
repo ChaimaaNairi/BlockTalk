@@ -22,10 +22,13 @@ contract BlockTalk {
         string message;
     }
 
+    //all users struct
     struct AllUsersStruck{
         string name;
         address accountAddress;
     }
+
+    AllUsersStruck[] getAllUsers;
 
     //mapping of users
     mapping(address => user) userList;
