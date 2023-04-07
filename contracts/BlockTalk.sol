@@ -89,7 +89,7 @@ contract BlockTalk {
             return keccak256(abi.encodePacked(user_pubkey1, friend_pubkey2));
         } else {
             return keccak256(abi.encodePacked(friend_pubkey2, user_pubkey1));
-        }
+        } 
     }
 
     //send message
