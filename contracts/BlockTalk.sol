@@ -65,11 +65,13 @@ contract BlockTalk {
                 user_pubkey1 = friend_pubkey2;
                 friend_pubkey2 = temp;
         }
-
-        
+        for(uint i = 0; i < userList[user_pubkey1].friendList.length; i++){
+            if(userList[user_pubkey1].friendList[i].pubkey == friend_pubkey2){
+                return true;
+            }
         }
-        return false;
     }
+
 
     //add friend
     function _addFriend(address user_key, address friend_key, string memory name) internal {
