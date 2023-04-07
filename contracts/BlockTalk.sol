@@ -23,7 +23,7 @@ contract BlockTalk {
     }
 
     //mapping of users
-    mapping(address => user) users;
-    
+    mapping(address => user) userList;
+
     
 }
