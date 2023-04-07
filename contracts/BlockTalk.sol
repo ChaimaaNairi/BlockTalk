@@ -28,28 +28,28 @@ contract BlockTalk {
     
 
     //check user exist
-    function checkUserExist(address pubkey) public view returns (bool) {
+    function checkUserExists(address pubkey) public view returns (bool) {
         return bytes(userList[pubkey].name).length > 0;
     }
 
     
     //create account
     function createAccount(string calldata name) external {
-        require(checkUserExist(msg.sender) == false, "User already exist");
+        require(checkUserExists(msg.sender) == false, "User already exist");
         require(bytes(name).length > 0, "Username cannot be empty");
         userList[msg.sender].name = name;
     }
 
     //get user name
     function getUsername(address pubkey) external view returns (string memory) {
-        require(checkUserExist(pubkey), "User is not registered");
+        require(checkUserExists(pubkey), "User is not registered");
         return userList[pubkey].name;
     }
 
     //add friend
     function addFriend(address friend_key, string calldata name) external {
-        require(checkUserExist(msg.sender), "Create an account first");
-        require(checkUserExist(friend_key), "User is not registered");
+        require(checkUserExists(msg.sender), "Create an account first");
+        require(checkUserExists(friend_key), "User is not registered");
         require(msg.sender != friend_key, "Users cannot add themselves as friends");
         require(checkAlreadyFriends(msg.sender, friend_key) == false, "These users are already friends");
 
@@ -90,6 +90,17 @@ contract BlockTalk {
         } else {
             return keccak256(abi.encodePacked(friend_pubkey2, user_pubkey1));
         }
+    }
+
+    //send message
+    function sendMessage(address friend_pubkey, string calldata message) external {
+        require(checkUserExists(msg.sender), "Create an account first");
+        require(checkUserExists(friend_pubkey), "User is not registered");
+        require(checkAlreadyFriends(msg.sender, friend_pubkey), "These users are not friends");
+
+        bytes32 chatCode = _getChatCode(msg.sender, friend_pubkey);
+        message memory newMessage = message(msg.sender, block.timestamp, message);
+        allMessages[chatCode].push(newMessage);
     }
 
 }
