@@ -18,9 +18,7 @@ contract BlockTalk {
     //friend struct
     struct Friend {
         address pubkey;
-        string email;
-        string bio;
-        string profilePic;
+        string name;
     }
 
     //message struct
