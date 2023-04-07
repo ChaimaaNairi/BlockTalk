@@ -14,8 +14,13 @@
 
                                                                                                                   
                                                                                                                   
-<img src="https://user-images.githubusercontent.com/83820363/230248073-27074c60-3fa6-4f44-b411-ea3e1dadb2a3.png" align="left" width="200px"/>
+<img src="https://user-images.githubusercontent.com/83820363/230248073-27074c60-3fa6-4f44-b411-ea3e1dadb2a3.png" align="right" width="200px"/>
 some text floating around the image
+A "newline". This text doesn't float anymore, is left-aligned.
+A "newline". This text doesn't float anymore, is left-aligned.
+A "newline". This text doesn't float anymore, is left-aligned.
+A "newline". This text doesn't float anymore, is left-aligned.
+A "newline". This text doesn't float anymore, is left-aligned.
 
 <br clear="left"/>
 
