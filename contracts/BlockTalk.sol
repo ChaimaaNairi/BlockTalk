@@ -45,6 +45,8 @@ contract BlockTalk {
         require(checkUserExists(msg.sender) == false, "User already exist");
         require(bytes(name).length > 0, "Username cannot be empty");
         userList[msg.sender].name = name;
+
+        getAllUsers.push(AllUsersStruck(name, msg.sender));
     }
 
     //get user name
