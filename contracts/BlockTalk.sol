@@ -28,8 +28,8 @@ contract BlockTalk {
     
 
     //check user exist
-    function checkUserExist(address _pubkey) public view returns (bool) {
-        return bytes(userList[_pubkey].name).length > 0;
+    function checkUserExist(address pubkey) public view returns (bool) {
+        return bytes(userList[pubkey].name).length > 0;
     }
 
 
