@@ -15,6 +15,20 @@ contract BlockTalk {
         string[] following;
     }
 
-    
+    //friend struct
+    struct Friend {
+        string name;
+        string email;
+        string bio;
+        string profilePic;
+    }
+
+    //message struct
+    struct Message {
+        string sender;
+        string receiver;
+        string message;
+        string time;
+    }
     
 }
