@@ -64,7 +64,6 @@ contract BlockTalk {
                 address temp = user_pubkey1;
                 user_pubkey1 = friend_pubkey2;
                 friend_pubkey2 = temp;
-            
         }
 
         
