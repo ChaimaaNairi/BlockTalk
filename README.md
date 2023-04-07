@@ -1,8 +1,9 @@
+<img src="https://user-images.githubusercontent.com/83820363/230248073-27074c60-3fa6-4f44-b411-ea3e1dadb2a3.png" align="right" width="200px"/>
+
 **BlockTalk**  is a decentralized chat application built on the Ethereum blockchain using smart contracts. It allows users to chat with each other without the need for a centralized server or intermediary. The application is powered by the Ethereum blockchain, which provides transparency, security, and immutability to the messages exchanged between users.
 
-<p align="right"">
-  <img src="https://user-images.githubusercontent.com/83820363/230248073-27074c60-3fa6-4f44-b411-ea3e1dadb2a3.png" />
-</p>
+<br clear="left"/>
+</br>
 
 
 <h3> Features: </h3>
@@ -22,6 +23,3 @@ A "newline". This text doesn't float anymore, is left-aligned.
 A "newline". This text doesn't float anymore, is left-aligned.
 A "newline". This text doesn't float anymore, is left-aligned.
 
-<br clear="left"/>
-
-A "newline". This text doesn't float anymore, is left-aligned.
