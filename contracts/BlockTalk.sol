@@ -48,13 +48,13 @@ contract BlockTalk {
     //add friend
     function addFriend(address friend_key, string calldata name) external {
         require(checkUserExist(msg.sender), "User is not registered");
-        require(checkUserExist(pubkey), "Friend is not registered");
-        require(msg.sender != pubkey, "You cannot add yourself");
+        require(checkUserExist(friend_key), "Friend is not registered");
+        require(msg.sender != friend_key, "You cannot add yourself");
         require(
-            checkFriendExist(msg.sender, pubkey) == false,
+            checkFriendExist(msg.sender, friend_key) == false,
             "Friend already exist"
         );
-        userList[msg.sender].friendList.push(friend(pubkey, name));
+        userList[msg.sender].friendList.push(friend(friend_key, name));
     }
 
 }
