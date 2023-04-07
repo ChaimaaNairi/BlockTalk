@@ -84,11 +84,11 @@ contract BlockTalk {
     }
 
     //get chat code
-    function _getChatCode(address user_pubkey1, address friend_pubkey2) internal pure returns (bytes32) {
-        if(user_pubkey1 < friend_pubkey2){
-            return keccak256(abi.encodePacked(user_pubkey1, friend_pubkey2));
+    function _getChatCode(address pubkey1, address pubkey2) internal pure returns (bytes32) {
+        if(pubkey1 < pubkey2){
+            return keccak256(abi.encodePacked(pubkey1, pubkey2));
         } else {
-            return keccak256(abi.encodePacked(friend_pubkey2, user_pubkey1));
+            return keccak256(abi.encodePacked(pubkey2, pubkey1));
         } 
     }
 
