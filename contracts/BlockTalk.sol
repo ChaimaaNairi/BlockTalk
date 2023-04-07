@@ -25,7 +25,7 @@ contract BlockTalk {
 
     //message struct
     struct Message {
-        string sender;
+        address sender;
         string receiver;
         string message;
         string time;
