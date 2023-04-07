@@ -49,11 +49,8 @@ contract BlockTalk {
     function addFriend(address friend_key, string calldata name) external {
         require(checkUserExist(msg.sender), "Create an account first");
         require(checkUserExist(friend_key), "User is not registered");
-        require(msg.sender != friend_key, "You cannot add yourself");
-        require(
-            checkFriendExist(msg.sender, friend_key) == false,
-            "Friend already exist"
-        );
+        require(msg.sender != friend_key, "Users cannot add themselves as friends");
+       
         userList[msg.sender].friendList.push(friend(friend_key, name));
     }
 
