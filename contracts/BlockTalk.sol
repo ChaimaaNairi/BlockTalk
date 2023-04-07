@@ -21,5 +21,9 @@ contract BlockTalk {
         uint256 timestamp;
         string message;
     }
+
+    //mapping of users
+    mapping(address => user) users;
+    
     
 }
