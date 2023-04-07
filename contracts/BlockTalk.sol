@@ -78,4 +78,10 @@ contract BlockTalk {
         userList[me].friendList.push(newFriend);
     }
 
+    //get my friends list
+    function getMyFriendList() external view returns (friend[] memory) {
+        require(checkUserExist(msg.sender), "Create an account first");
+        return userList[msg.sender].friendList;
+    }
+
 }
