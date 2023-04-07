@@ -33,7 +33,7 @@ contract BlockTalk {
     }
 
     //check already friend
-    function checkAlreadyFriend(address user_key, address friend_key) public view returns (bool) {
+    function checkAlreadyFriend(address user_key, address friend_key) internal view returns (bool) {
         for (uint256 i = 0; i < userList[user_key].friendList.length; i++) {
             if (userList[user_key].friendList[i].pubkey == friend_key) {
                 return true;
