@@ -105,10 +105,6 @@ contract BlockTalk {
 
     //read message
     function readMessage(address friend_key) external view returns (message[] memory) {
-        require(checkUserExists(msg.sender), "Create an account first");
-        require(checkUserExists(friend_key), "User is not registered");
-        require(checkAlreadyFriends(msg.sender, friend_key), "You are not frind with the given address user");
-
         bytes32 chatCode = _getChatCode(msg.sender, friend_key);
         return allMessages[chatCode];
     }
