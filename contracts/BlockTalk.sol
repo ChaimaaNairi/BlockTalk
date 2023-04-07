@@ -32,6 +32,10 @@ contract BlockTalk {
         return bytes(userList[pubkey].name).length > 0;
     }
 
-
+    //create account
+    function createAccount(string memory name) public {
+        require(!checkUserExist(msg.sender), "User already exist");
+        userList[msg.sender].name = name;
+    }
 
 }
