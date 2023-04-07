@@ -118,4 +118,9 @@ contract BlockTalk {
         return allMessages[chatCode];
     }
 
+    //get all users
+    function getAllAppUser() public view returns (AllUsersStruck[] memory){
+        return getAllUsers;
+    }
+
 }
