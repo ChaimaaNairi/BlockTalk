@@ -2,7 +2,7 @@ import React from 'react'
 
 const navbar = () => {
   return (
-    <div className=''>
+    <div className='w-[100%]'>
       navbar
     </div>
   )
