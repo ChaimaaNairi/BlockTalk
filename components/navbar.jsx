@@ -79,7 +79,7 @@ export default function Navbar() {
                 {/* metamask install */}               
                
                 
-                <Wallet/>
+                
                 
                 {/* metamask button end */}
            
