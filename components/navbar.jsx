@@ -3,16 +3,14 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from "../public/images/logo.png";
+import Logo from "../images/logo.png";
 import Image from 'next/image'
 
-import ActiveLink from "./link"
-import Wallet from './wallet';
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "All donationEvents", href: "/allDonationEvent", current: false },
-  { name: "Create a doantionEvent", href: "/createDonationEvent", current: false },
+  { name: "All contact", href: "/allContact", current: false },
+  { name: "Create a profile", href: "/createProfile", current: false },
   {name :"dashboard", href:"/dashboard", current:false},
 ];
  
