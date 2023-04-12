@@ -5,7 +5,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from "../images/logo.png";
 import Image from 'next/image'
-
+import Wallet from './wallet'
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -79,7 +79,7 @@ export default function Navbar() {
                 {/* metamask install */}               
                
                 
-                
+                <Wallet/> 
                 
                 {/* metamask button end */}
            
