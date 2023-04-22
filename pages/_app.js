@@ -1,5 +1,6 @@
-import Layout from '../components/layout'
-import '../style/global.css'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import '../styles/global.css'
 import Head from 'next/head'
 import { BlockTalkProvider } from "../Context/BlockTalkContext";
 
@@ -14,9 +15,9 @@ const MyApp = ({ Component, pageProps }) => (
       </Head>
 
       <BlockTalkProvider>
-        <Layout>
+        <Navbar/>
           <Component {...pageProps} />
-        </Layout>   
+        <Footer/>   
       </BlockTalkProvider>
 
     </div>

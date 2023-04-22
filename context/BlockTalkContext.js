@@ -7,9 +7,10 @@ import {
   connectingWithContract,
 } from "../Utils/apiFeature";
 
-export const BlockTalkContext = React.createContext();
+export const BlockTalkContect = React.createContext();
 
 export const BlockTalkProvider = ({ children }) => {
+    //set initial states
     const [account, setAccount] = useState("");
     const [userName, setUserName] = useState("");
     const [friendLists, setFriendLists] = useState([]);
@@ -20,21 +21,25 @@ export const BlockTalkProvider = ({ children }) => {
 
     const [currentUserName, setCurrentUserName] = useState("");
     const [currentUserAddress, setCurrentUserAddress] = useState("");
+
+    // Get the router
     const router = useRouter();
+
+    // Fetch data from the contract and set the state
     const fetchData = async () => {
         try {
-          //GET CONTRACT
+          //Get contract
           const contract = await connectingWithContract();
-          //GET ACCOUNT
+          //Get account
           const connectAccount = await connectWallet();
           setAccount(connectAccount);
-          //GET USER NAME
+          //Get user name
           const userName = await contract.getUsername(connectAccount);
           setUserName(userName);
-          //GET MY FRIEND LIST
+          //Get my friend list
           const friendLists = await contract.getMyFriendList();
           setFriendLists(friendLists);
-          //GET ALL APP USER LIST
+          //Get all app user list
           const userList = await contract.getAllAppUser();
           setUserLists(userList);
         } catch (error) {
@@ -42,11 +47,13 @@ export const BlockTalkProvider = ({ children }) => {
           console.log(error);
         }
       };
+
+    // Run fetchData() when the component mounts
       useEffect(() => {
         fetchData();
       }, []);
     
-      //READ MESSAGE
+      //Read message
       const readMessage = async (friendAddress) => {
         try {
           const contract = await connectingWithContract();
@@ -57,7 +64,7 @@ export const BlockTalkProvider = ({ children }) => {
         }
       };
     
-      //CREATE ACCOUNT
+      //create account
       const createAccount = async ({ name, accountAddress }) => {
         try {
           // if (name || accountAddress)
@@ -74,7 +81,7 @@ export const BlockTalkProvider = ({ children }) => {
         }
       };
     
-      //ADD YOUR FRIENDS
+      //Add your friends
       const addFriends = async ({ name, accountAddress }) => {
         try {
           // if (name || accountAddress) return setError("Please provide data");
@@ -91,7 +98,7 @@ export const BlockTalkProvider = ({ children }) => {
         }
       };
     
-      //SEND MESSAGE TO YOUR FRIEND
+      //Send message to your friends or any user
       const sendMessage = async ({ msg, address }) => {
         try {
           // if (msg || address) return setError("Please Type your Message");
@@ -107,7 +114,7 @@ export const BlockTalkProvider = ({ children }) => {
         }
       };
     
-      //READ INFO
+      //Read information of any user
       const readUser = async (userAddress) => {
         const contract = await connectingWithContract();
         const userName = await contract.getUsername(userAddress);
@@ -115,7 +122,7 @@ export const BlockTalkProvider = ({ children }) => {
         setCurrentUserAddress(userAddress);
       };
       return (
-        <BlockTalkContext.Provider
+        <BlockTalkContect.Provider
           value={{
             readMessage,
             createAccount,
@@ -136,7 +143,7 @@ export const BlockTalkProvider = ({ children }) => {
           }}
         >
           {children}
-        </BlockTalkContext.Provider>
+        </BlockTalkContect.Provider>
       );
     };
     

@@ -28,3 +28,5 @@ typechain-types
 cache
 artifacts
 
+/assets
+/context/constants

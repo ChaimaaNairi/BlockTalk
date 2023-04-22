@@ -1,115 +1,154 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable @next/next/no-img-element */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from "../images/logo.png";
-import Image from 'next/image'
+import React, { useEffect, useState, useContext } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-import ActiveLink from "./link"
-import Wallet from './wallet'
+//INTERNAL IMPORT
+import Style from "./CSSFiles/NavBar.module.css";
+import { BlockTalkContect } from "../Context/BlockTalkContext";
+import  Model  from "./Model";
+import Error from "./Error";
+import images from "../assets";
 
-const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "All contact", href: "/allContact", current: false },
-  { name: "Create a profile", href: "/createProfile", current: false },
-  {name :"dashboard", href:"/dashboard", current:false},
-];
- 
-function classNames() {
-    var classes = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        classes[_i] = arguments[_i];
-    }
-    return classes.filter(Boolean).join(' ');
-}
+const Navbar = () => {
+  const menuItems = [
+    {
+      menu: "All Users",
+      link: "alluser",
+    },
+    {
+      menu: "CHAT",
+      link: "/",
+    },
+    {
+      menu: "CONTACT",
+      link: "/",
+    },
+    {
+      menu: "SETTING",
+      link: "/",
+    },
+    {
+      menu: "FAQS",
+      link: "/",
+    },
+    {
+      menu: "TERMS OF USE",
+      link: "/",
+    },
+  ];
 
+  //USESTATE
+  const [active, setActive] = useState(2);
+  const [open, setOpen] = useState(false);
+  const [openModel, setOpenModel] = useState(false);
 
-export default function Navbar() {
-
+  const { account, userName, connectWallet, createAccount, error } =
+    useContext(BlockTalkContect);
   return (
-    <section className='mb-20'>
-  
-    <Disclosure as="nav" className="bg-[#7AA4B9] fixed top-0 left-0 right-0 z-10 py-1">
-      {({ open }) => (
-        <>
-          <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
-            <div className="relative flex h-20 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
+    <div className={Style.NavBar}>
+      <div className={Style.NavBar_box}>
+        <div className={Style.NavBar_box_left}>
+          <Image src={images.logo} alt="logo" width={50} height={50} />
+        </div>
+        <div className={Style.NavBar_box_right}>
+          {/* //DESKTOP */}
+          <div className={Style.NavBar_box_right_menu}>
+            {menuItems.map((el, i) => (
+              <div
+                onClick={() => setActive(i + 1)}
+                key={i + 1}
+                className={`${Style.NavBar_box_right_menu_items} ${
+                  active == i + 1 ? Style.active_btn : ""
+                }`}
+              >
+                <Link
+                  className={Style.NavBar_box_right_menu_items_link}
+                  href={el.link}
+                >
+                  {el.menu}
+                </Link>
               </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex flex-shrink-0 items-center">
-                <a className='cursor-pointer' href="/">
-                <div className="flex flex-row pointer-events-none mr-10 p-10">
-                  <Image alt="bt" src={Logo} width={90} height={90} objectFit="cover" />
-                </div>
-                </a>
-              </div>
-                
-                <div className="hidden lg:ml-6 lg:block">
-                <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <ActiveLink 
-                        key={item.name}
-                        href={item.href}
-                        activeclass="bg-gray-900 text-white"
-                      >
-                        <a
-                          className="text-gray-200 hover:bg-gray-200 hover:text-black px-4 py-3 rounded-md text-sm font-medium"
-                          aria-current={item.current ? 'page' : undefined}                        >
-                          {item.name}
-                        </a>
-                      </ActiveLink>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-                {/* metamask install */}               
-               
-                
-                <Wallet/> 
-                
-                {/* metamask button end */}
-           
-              </div>
-            </div>
+            ))}
           </div>
 
-          <Disclosure.Panel className="lg:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
+          {/* //MOBILE */}
+          {open && (
+            <div className={Style.mobile_menu}>
+              {menuItems.map((el, i) => (
+                <div
+                  onClick={() => setActive(i + 1)}
+                  key={i + 1}
+                  className={`${Style.mobile_menu_items} ${
+                    active == i + 1 ? Style.active_btn : ""
+                  }`}
                 >
-                  {item.name}
-                </Disclosure.Button>
+                  <Link className={Style.mobile_menu_items_link} href={el.link}>
+                    {el.menu}
+                  </Link>
+                </div>
               ))}
+
+              <p className={Style.mobile_menu_btn}>
+                <Image
+                  src={images.close}
+                  alt="close"
+                  width={50}
+                  height={50}
+                  onClick={() => setOpen(false)}
+                />
+              </p>
             </div>
-          </Disclosure.Panel>
-        </>
+          )}
+
+          {/* CONNECT WALLET */}
+          <div className={Style.NavBar_box_right_connect}>
+            {account == "" ? (
+              <button onClick={() => connectWallet()}>
+                {""}
+                <span>Connect Wallet</span>
+              </button>
+            ) : (
+              <button onClick={() => setOpenModel(true)}>
+                {""}
+                <Image
+                  src={userName ? images.accountName : images.create2}
+                  alt="Account image"
+                  width={20}
+                  height={20}
+                />
+                {""}
+                <small>{userName || "Create Account"}</small>
+              </button>
+            )}
+          </div>
+
+          <div
+            className={Style.NavBar_box_right_open}
+            onClick={() => setOpen(true)}
+          >
+            <Image src={images.open} alt="open" width={30} height={30} />
+          </div>
+        </div>
+      </div>
+
+      {/* MODEL COMPONENT */}
+      {openModel && (
+        <div className={Style.modelBox}>
+          <Model
+            openBox={setOpenModel}
+            title="WELCOME TO"
+            head="CHAT BUDDY"
+            info="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate maxime assumenda exercitationem voluptatibus, vero aliquid in tempore aut, impedit dolores voluptate recusandae nulla fuga? Praesentium iusto mollitia sint fugit! Placeat?"
+            smallInfo="Kindley seclet your name..."
+            image={images.hero}
+            functionName={createAccount}
+            address={account}
+          />
+        </div>
       )}
-    </Disclosure>
- 
-      </section>
-  )
-}
+      {error == "" ? "" : <Error error={error} />}
+    </div>
+  );
+};
+
+export default Navbar;
