@@ -16,6 +16,5 @@
 + **Security:** BlockTalk uses smart contracts to handle the encryption and decryption of messages, ensuring that messages are secure and tamper-proof.
 
                 
-                
-                
+               
          
