@@ -1,6 +1,6 @@
 import Navbar from "./navbar";
 import Footer from "./footer"
-
+import { useState, createContext } from "react";
 
 const App = createContext();
 
