@@ -13,5 +13,7 @@
 + **Easy to use:** BlockTalk has a user-friendly interface that makes it easy for users to register and start chatting with other users.
 + **Security:** BlockTalk uses smart contracts to handle the encryption and decryption of messages, ensuring that messages are secure and tamper-proof.
 
-                                                                                                                  
+                
+                
+                
          
