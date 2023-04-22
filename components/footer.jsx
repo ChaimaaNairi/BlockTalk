@@ -31,7 +31,7 @@ const Footer = () => {
             </a>
         </div>
         <p className="text-white text-base leading-6 text-center">
-            All Rights Reserved by <span className="font-bold">DONATEBLOCKS</span> Build by <span className="font-bold cursor-pointer hover:text-gray-300">@donateBlocks</span>  | Copyright © {new Date().getFullYear()}   DonateBlocks.org
+            All Rights Reserved and Build by <span className="font-bold cursor-pointer hover:text-gray-300">@BlockTalk</span>  | Copyright © {new Date().getFullYear()}   BlockTalk.org
 
         </p>
     </div>
