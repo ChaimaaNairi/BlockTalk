@@ -3,7 +3,7 @@ import React from 'react'
 const wallet = () => {
   return (
     <div>
-      wallet
+      wallet Button
     </div>
   )
 }
