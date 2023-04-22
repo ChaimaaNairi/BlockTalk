@@ -79,6 +79,7 @@ contract BlockTalk {
                 return true;
             }
         }
+        return false;
     }
 
     //add friend

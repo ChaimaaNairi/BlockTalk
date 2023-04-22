@@ -1,18 +1,7 @@
-/*module.exports = {
-  webpack: (config) => {
-    config.node = {
-      fs: 'empty'
-    }
-    return config
-  }
-   
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+}
 
-*/
-
-module.exports = {
-  resolve: {
-    extensions: ['.js', '.jsx']
-  }
-
-};
+module.exports = nextConfig
